@@ -1,4 +1,4 @@
-export interface Quizz {
+export interface Quiz {
   title: string;
   entity: string;
   question: {
@@ -19,33 +19,30 @@ export interface Quizz {
   dyk_text: string;
 }
 
-export async function getQuizz() {
-  const res = await fetch("http://localhost:3000/api/quizzes");
-  const data: Quizz = await res.json();
+export async function getQuiz() {
+  const res = await fetch(`${process.env.NEXT_PUBLIC_APP_URL}/api/quizes`);
+  const data: Quiz = await res.json();
   return data;
 }
 
 // This could be replaced by template engine in the future
-export function dataTextReplace(quizz: Quizz) {
-  quizz.question.text = quizz.question.text.replaceAll(
+export function dataTextReplace(quiz: Quiz) {
+  quiz.question.text = quiz.question.text.replaceAll("{{entity}}", quiz.entity);
+  quiz.explanation.text = quiz.explanation.text.replaceAll(
     "{{entity}}",
-    quizz.entity
-  );
-  quizz.explanation.text = quizz.explanation.text.replaceAll(
-    "{{entity}}",
-    quizz.entity
+    quiz.entity
   );
 
-  let answers = quizz.question.answers.filter((answer) => {
+  let answers = quiz.question.answers.filter((answer) => {
     const key = Object.keys(answer)[0];
     return answer[key];
   })[0];
   const correctAnswer = Object.keys(answers)[0];
 
-  quizz.explanation.text = quizz.explanation.text.replaceAll(
+  quiz.explanation.text = quiz.explanation.text.replaceAll(
     "{{answer}}",
     correctAnswer
   );
 
-  return quizz;
+  return quiz;
 }

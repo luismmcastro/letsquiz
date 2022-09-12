@@ -1,6 +1,6 @@
 import Image from "next/image";
 import { useContext } from "react";
-import QuizzContext from "../context/Quizz";
+import QuizContext from "../context/Quiz";
 
 interface OptionProps {
   text: string;
@@ -33,7 +33,7 @@ const Option = (props: OptionProps) => {
 };
 
 const Answer = () => {
-  const quizz = useContext(QuizzContext);
+  const quiz = useContext(QuizContext);
 
   return (
     <div>
@@ -42,10 +42,10 @@ const Answer = () => {
         <div className="bg-white rounded-xl overflow-hidden shadow-2xl">
           <div className="p-5 sm:p-10 space-y-5 sm:space-y-10">
             <div className="font-serif font-semibold text-2xl sm:text-3xl">
-              {quizz.data?.explanation.text}
+              {quiz.data?.explanation.text}
             </div>
             <div className="grid sm:grid-cols-2 gap-4 sm:gap-8">
-              {quizz.data?.explanation.list.map((item, i) => (
+              {quiz.data?.explanation.list.map((item, i) => (
                 <Option key={i} text={item.text} image={item.image} />
               ))}
             </div>

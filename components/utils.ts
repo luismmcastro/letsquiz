@@ -1,4 +1,4 @@
-import { IQuizzContext } from "../context/Quizz";
+import { IQuizContext } from "../context/Quiz";
 
 export enum AnswerState {
   Normal,
@@ -9,7 +9,7 @@ export enum AnswerState {
 export function answerState(
   answer: string,
   isCorrectAnswer: boolean,
-  userAnswers: IQuizzContext["answers"]
+  userAnswers: IQuizContext["answers"]
 ) {
   const result = userAnswers?.filter(
     (userAnswer) => userAnswer.option === answer

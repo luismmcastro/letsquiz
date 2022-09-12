@@ -1,10 +1,10 @@
 import Image from "next/image";
 import { useContext } from "react";
-import QuizzContext from "../context/Quizz";
+import QuizContext from "../context/Quiz";
 import LampIcon from "./icons/Lamp";
 
 const Fact = () => {
-  const quiz = useContext(QuizzContext);
+  const quiz = useContext(QuizContext);
 
   return (
     <div className="bg-white rounded-xl m-5 sm:m-10">

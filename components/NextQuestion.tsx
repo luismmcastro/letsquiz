@@ -1,13 +1,13 @@
 import { useContext, useEffect, useState } from "react";
-import QuizzContext from "../context/Quizz";
+import QuizContext from "../context/Quiz";
 import PauseIcon from "./icons/Pause";
 
 const NextQuestion = () => {
   const [isPaused, setIsPaused] = useState(false);
-  const quizz = useContext(QuizzContext);
+  const quiz = useContext(QuizContext);
 
   useEffect(() => {
-    const timer = setTimeout(() => quizz.nextQuestion(), 10000);
+    const timer = setTimeout(() => quiz.nextQuestion(), 10000);
     return () => clearTimeout(timer);
   }, []);
 
@@ -26,7 +26,7 @@ const NextQuestion = () => {
         </div>
         <div className="bg-white w-px h-full"></div>
         <div
-          onClick={() => quizz.nextQuestion()}
+          onClick={() => quiz.nextQuestion()}
           className="cursor-pointer grow font-bold text-white text-center"
         >
           NEXT QUESTION

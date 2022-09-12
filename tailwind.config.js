@@ -39,6 +39,7 @@ module.exports = {
         200: "#BC3903",
       },
     },
+    extend: {},
   },
   plugins: [],
 };

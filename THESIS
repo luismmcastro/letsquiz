@@ -1,0 +1,30 @@
+# Packages used
+
+- NextJS
+- React
+- TailwindCSS
+- classNames
+
+# Bundle Size
+
+The page has only has 88 KB with 4.38KB of CSS and 6.18KB for the quiz page the rest of course if NextJS code
+
+# Image optimization
+
+Every image uses Next/image so is being resized and transcoded to next-gen images with lower sizes
+
+# SSR
+
+Thanks to NextJS, every API request is being requested on the server side and a rendering page using the first state. So every element will be available on Page source to be consumed by Search engines.
+
+# Tailwind
+
+This was the CSS framework I choose. Is being used by Netflix and other companies as a tiny solution for styled components. They have a different approach that is: instead of having component classes and css files they provide utility classes to style our components and it works and scales very well since React incentivizes web apps to be component based.
+
+# Improvements
+
+The project only took in consideration one question flow so one improvement that need to take place in order to support multiple questions is to adapt Quiz Context and create a Slider component to better manage slides and multiple questions
+
+Spacings are based on Tailwind standard and by default they don't have exactly the same sizes as shown on Figma (it could differ one or two pixels for some elements). So the only thing I would improve is evaluate designs and override Tailwind theme so we could say that is pixel perfect.
+
+I'm loading all fonts that each font family supports but this could be optimized as well since we don't use every weight

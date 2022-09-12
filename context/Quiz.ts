@@ -1,18 +1,18 @@
 import React from "react";
-import { Quizz } from "../sdk/quizzes";
+import { Quiz } from "../sdk/quizes";
 
-export interface IQuizzContext {
-  data?: Quizz;
+export interface IQuizContext {
+  data?: Quiz;
   answers?: { id: number; option: string }[];
   answerQuestion: (id: number, option: string) => void;
   nextQuestion: () => void;
 }
 
-const QuizzContext = React.createContext<IQuizzContext>({
+const QuizContext = React.createContext<IQuizContext>({
   data: undefined,
   answers: undefined,
   answerQuestion: () => {},
   nextQuestion: () => {},
 });
 
-export default QuizzContext;
+export default QuizContext;

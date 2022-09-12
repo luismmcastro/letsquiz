@@ -1,6 +1,6 @@
 import Image from "next/image";
 import { useContext, useState } from "react";
-import QuizzContext from "../context/Quizz";
+import QuizContext from "../context/Quiz";
 import CheckIcon from "./icons/Check";
 import XMarkIcon from "./icons/XMark";
 import classNames from "classnames";
@@ -44,26 +44,26 @@ const Option = (props: OptionProps) => {
 };
 
 const Question = () => {
-  const quizz = useContext(QuizzContext);
+  const quiz = useContext(QuizContext);
 
   return (
     <div className="shadow-lg sm:rounded-lg overflow-hidden">
       <div className="bg-black p-5 sm:p-10">
         <div className="h-24 w-24 sm:h-52 sm:w-52 block mx-auto rounded border-solid border-4 border-grey-50 overflow-hidden">
-          {quizz.data?.question.image && (
+          {quiz.data?.question.image && (
             <Image
               className="object-cover"
               layout="responsive"
               height={200}
               width={200}
-              src={quizz.data?.question.image}
+              src={quiz.data?.question.image}
             />
           )}
         </div>
         <div className="bg-white w-full -mt-12 sm:-mt-28 rounded-lg overflow-hidden">
           <div className="pt-16 sm:pt-40 pb-7 sm:pb-10 px-9 sm:px-28">
             <div className="text-center font-serif font-bold text-3xl">
-              {quizz.data?.question.text}
+              {quiz.data?.question.text}
             </div>
           </div>
           <div className="bg-grey-50 w-full">
@@ -72,17 +72,17 @@ const Question = () => {
         </div>
       </div>
       <div className="bg-white p-5 sm:p-10 grid sm:grid-cols-2 gap-5">
-        {quizz.data?.question.answers.map((answer, i) => {
+        {quiz.data?.question.answers.map((answer, i) => {
           const name = Object.keys(answer)[0];
           const isCorrectAnswer = answer[name];
           return (
             <Option
               key={i}
               name={name}
-              state={answerState(name, isCorrectAnswer, quizz.answers)}
+              state={answerState(name, isCorrectAnswer, quiz.answers)}
               onPressOption={() => {
-                quizz.answerQuestion(
-                  quizz.data!.question.id,
+                quiz.answerQuestion(
+                  quiz.data!.question.id,
                   Object.keys(answer)[0]
                 );
               }}
